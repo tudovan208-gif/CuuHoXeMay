@@ -2071,6 +2071,13 @@ h6,
   gap: 36px;
 }
 
+@media (max-width: 1024px) {
+  .pricing-wrapper {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
 /* Price table full width within its column */
 .price-table-card {
   width: 100%;
@@ -3967,3 +3974,1627 @@ section[style*="linear-gradient"] p {
     font-size: 0.92rem;
   }
 }
+
+/* =========================================================================
+   MOBILE & SMALL PHONE RESPONSIVE OVERHAUL (FIX SKEWED / MISALIGNED LAYOUT)
+   ========================================================================= */
+
+/* 1. Chống tràn ngang tuyệt đối & chống lệch khung trên mọi trình duyệt di động */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+section,
+header,
+footer {
+  max-width: 100%;
+}
+
+/* Mọi phần tử con trong CSS Grid / Flex phải cho phép co nhỏ (min-width: 0)
+   để không đẩy rách cột trên màn hình điện thoại bé */
+.hero-grid > *,
+.services-grid > *,
+.pricing-wrapper > *,
+.reviews-grid > *,
+.contact-grid > *,
+.branches-grid > *,
+.footer-grid > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* 2. Tablet & Mobile (<= 768px) */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section {
+    padding: 52px 0;
+  }
+
+  .section-header {
+    margin-bottom: 32px;
+    padding: 0 4px;
+  }
+
+  .section-tag {
+    font-size: 0.74rem;
+    padding: 5px 12px;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: clamp(1.45rem, 6vw, 1.95rem) !important;
+    line-height: 1.28 !important;
+    word-break: break-word;
+  }
+
+  .section-desc {
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+
+  /* Header gọn gàng, cân đối trên điện thoại */
+  .header .nav-container {
+    height: 62px !important;
+    gap: 10px !important;
+  }
+
+  .header.scrolled .nav-container {
+    height: 58px !important;
+  }
+
+  .nav-menu {
+    top: 62px !important;
+    max-height: calc(100vh - 62px) !important;
+    padding: 12px 16px 28px !important;
+  }
+
+  .logo {
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .logo-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+  }
+
+  .logo-title {
+    font-size: 1.05rem;
+    white-space: nowrap;
+  }
+
+  .logo-subtitle {
+    display: none;
+  }
+
+  .nav-actions {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .nav-hotline-btn {
+    padding: 8px 12px !important;
+    font-size: 0.82rem !important;
+    gap: 6px !important;
+  }
+
+  .mobile-toggle {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+  }
+
+  /* Hero section cân đối trên điện thoại */
+  .hero {
+    min-height: auto;
+    padding-top: 82px;
+    padding-bottom: 44px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .hero-content {
+    text-align: left;
+  }
+
+  .hero-emergency-tag {
+    display: inline-flex;
+    max-width: 100%;
+    font-size: 0.78rem;
+    padding: 6px 12px;
+    margin-bottom: 16px;
+    line-height: 1.35;
+    white-space: normal;
+  }
+
+  .hero-title {
+    font-size: clamp(1.65rem, 6.8vw, 2.25rem) !important;
+    line-height: 1.24 !important;
+    margin-bottom: 14px;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.62;
+    margin-bottom: 22px;
+    max-width: 100%;
+  }
+
+  /* Cụm nút CTA Hero xếp dọc full-width để không bị rớt dòng lệch */
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 18px;
+    font-size: 0.94rem;
+    text-align: center;
+  }
+
+  /* Thống kê Hero 3 ô cân đối ở giữa */
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding-top: 18px;
+  }
+
+  .stat-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 10px 6px;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 1.35rem;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+
+  .stat-unit {
+    font-size: 0.82rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    line-height: 1.3;
+  }
+
+  /* Widget Đặt Xe Cứu Hộ trên Mobile */
+  .hero-widget-card {
+    padding: 20px 16px !important;
+    border-radius: 16px;
+  }
+
+  .widget-header {
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+  }
+
+  .widget-header h3 {
+    font-size: 1.12rem;
+  }
+
+  .widget-trust {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 14px;
+    padding-top: 12px;
+  }
+
+  /* Dịch vụ (Services Grid) */
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px;
+  }
+
+  .service-card {
+    padding: 20px 16px;
+  }
+
+  .service-title {
+    white-space: normal !important;
+    font-size: 1.12rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .service-footer {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* Bảng Giá Minh Bạch (Pricing Section) — Sửa lỗi bị chia 2 cột hẹp trên điện thoại */
+  .pricing-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .pricing-info-card,
+  .price-table-card {
+    padding: 22px 16px !important;
+    border-radius: 16px;
+    width: 100%;
+  }
+
+  .pricing-info-card h3 {
+    font-size: 1.28rem;
+    line-height: 1.32;
+  }
+
+  .brand-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 10px 0;
+  }
+
+  .brand-label {
+    min-width: 0;
+    font-size: 0.8rem;
+  }
+
+  .brand-models {
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+
+  .hotline-banner-box {
+    padding: 16px 14px;
+    margin-top: 18px;
+  }
+
+  .hotline-number-big {
+    font-size: clamp(1.5rem, 6.5vw, 1.9rem);
+    word-break: break-word;
+  }
+
+  .price-table-header {
+    padding: 14px 16px;
+    margin: -22px -16px 16px -16px;
+  }
+
+  .price-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 12px 10px;
+  }
+
+  .price-value {
+    align-self: flex-start;
+    white-space: normal;
+  }
+
+  .pledge-box-premium {
+    padding: 14px 12px;
+    gap: 10px;
+  }
+
+  /* Đánh Giá Khách Hàng (Review Stats Bar & Grid) */
+  .review-stats-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 18px 16px;
+    gap: 14px;
+  }
+
+  .rating-overview {
+    justify-content: center;
+    text-align: left;
+  }
+
+  .rating-big {
+    font-size: 2.3rem;
+  }
+
+  .review-filter-tabs {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .review-filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-chip {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  #btnOpenReviewModal {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .review-card {
+    padding: 20px 16px;
+  }
+
+  /* Liên Hệ & Đặt Lịch (Contact Section) */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+
+  .contact-info-card,
+  .contact-form-card {
+    padding: 22px 16px !important;
+    border-radius: 16px;
+  }
+
+  .contact-info-card h3,
+  .contact-form-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .contact-item {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .contact-meta {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .contact-meta p,
+  .contact-meta a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    font-size: 0.95rem;
+  }
+
+  /* Mạng Lưới Chi Nhánh (Branches Grid) */
+  .branches-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+
+  .branch-card {
+    padding: 18px 16px;
+  }
+
+  /* Footer trên điện thoại */
+  .footer {
+    padding: 44px 0 96px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+    padding-top: 20px;
+  }
+
+  /* Modal vừa vặn màn hình nhỏ */
+  .modal-backdrop {
+    padding: 12px;
+  }
+
+  .modal-card {
+    padding: 22px 16px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 16px;
+  }
+
+  .toast-container {
+    left: 12px;
+    right: 12px;
+    bottom: 84px;
+  }
+
+  .toast {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* 3. Điện thoại cỡ nhỏ & phổ thông (<= 480px: iPhone SE, iPhone Mini, Android 360px-430px) */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  /* Ẩn số điện thoại chữ trên thanh Header, chỉ giữ nút icon gọi gọn đẹp */
+  .nav-hotline-btn span {
+    display: none;
+  }
+
+  .nav-hotline-btn {
+    padding: 9px 11px !important;
+    border-radius: 10px !important;
+  }
+
+  /* Chọn loại xe chuyển về 2 cột rộng rãi thay vì 3 cột bị ép chữ */
+  .hero-widget-card .vehicle-selector,
+  .vehicle-selector {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .hero-widget-card .vehicle-option label {
+    padding: 9px 8px !important;
+    font-size: 0.78rem !important;
+    min-height: 42px;
+  }
+
+  /* Ô nhập vị trí & nút Lấy GPS gọn lại để chừa chỗ nhập địa chỉ */
+  .hero-widget-card .form-control.has-btn-locate {
+    padding-right: 96px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .hero-widget-card .btn-locate {
+    height: 30px !important;
+    padding: 0 8px !important;
+    font-size: 0.72rem !important;
+    right: 5px !important;
+    gap: 4px !important;
+  }
+
+  /* Form 2 cột chuyển thành 1 cột trên màn hình nhỏ */
+  .form-row-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* 2 nút ở cuối thẻ Contact Info xếp dọc gọn gàng */
+  .contact-info-card > div[style*="display: flex"] {
+    flex-direction: column !important;
+  }
+
+  /* Thanh gọi nhanh cố định dưới đáy màn hình */
+  .mobile-sticky-bar {
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    gap: 8px;
+  }
+
+  .sticky-btn {
+    padding: 11px 8px;
+    font-size: 0.82rem;
+    gap: 6px;
+  }
+
+  .floating-actions {
+    right: 12px;
+    bottom: 76px;
+    gap: 8px;
+  }
+
+  .fab-btn {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* 4. Điện thoại màn hình siêu nhỏ (<= 360px) */
+@media (max-width: 360px) {
+  .logo-title {
+    font-size: 0.95rem;
+  }
+
+  .hero-title {
+    font-size: 1.5rem !important;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .stat-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    text-align: left;
+  }
+
+  .stat-number {
+    margin-bottom: 0;
+  }
+}
+
+/* ==========================================================================
+   8. DAYLIGHT INDUSTRIAL EDITORIAL UI/UX OVERHAUL (2026 REDESIGN)
+   - Xóa bỏ giao diện tối (Dark Header / Dark Hero Overlay / Dark Modals)
+   - Xóa bỏ khuôn mẫu AI (Centered Pill Badge + Gradient Text + Bubbly Cards)
+   - Định hình cá tính: Xưởng Kỹ Thuật Chính Hãng & Trung Tâm Điều Phối Ban Ngày
+   ========================================================================== */
+
+:root {
+  --primary: #EA580C;
+  --primary-hover: #C2410C;
+  --secondary: #D97706;
+  --text-main: #0F172A;
+  --text-muted: #475569;
+  --text-dim: #64748B;
+  --bg-canvas: #FAF8F5;
+  --bg-surface: #F1F5F9;
+  --border-crisp: #E2E8F0;
+  --border-strong: #CBD5E1;
+}
+
+body {
+  background-color: var(--bg-canvas) !important;
+  color: var(--text-main) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 8.1 HEADER SÁNG TINH KHIẾT (DAYLIGHT TECHNICAL HEADER) ---------- */
+.header,
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.97) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1.5px solid var(--border-crisp) !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+}
+
+.header .logo-icon {
+  background: #FFF7ED !important;
+  border: 1.5px solid #FDBA74 !important;
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.12) !important;
+}
+
+.header .logo-title,
+.header:not(.scrolled) .logo-title,
+.header.scrolled .logo-title {
+  color: #0F172A !important;
+  text-shadow: none !important;
+}
+
+.header .logo-title .logo-highlight {
+  color: var(--primary) !important;
+  -webkit-text-fill-color: var(--primary) !important;
+}
+
+.header .logo-subtitle {
+  color: #15803D !important;
+}
+
+.header .nav-link,
+.header:not(.scrolled) .nav-link,
+.header.scrolled .nav-link {
+  color: #334155 !important;
+  font-weight: 600 !important;
+}
+
+.header .nav-link:hover,
+.header:not(.scrolled) .nav-link:hover,
+.header.scrolled .nav-link:hover {
+  color: #0F172A !important;
+  background: #F1F5F9 !important;
+}
+
+.header .nav-link.active,
+.header:not(.scrolled) .nav-link.active,
+.header.scrolled .nav-link.active {
+  color: var(--primary) !important;
+  background: #FFF7ED !important;
+  border: 1px solid #FDBA74 !important;
+}
+
+.header .mobile-toggle,
+.header:not(.scrolled) .mobile-toggle,
+.header.scrolled .mobile-toggle {
+  color: #0F172A !important;
+  border: 1px solid var(--border-crisp);
+  border-radius: 8px;
+}
+
+/* Dropdown menu sáng thanh lịch thay vì hộp đen */
+.nav-dropdown-menu {
+  background: #FFFFFF !important;
+  border: 1.5px solid var(--border-crisp) !important;
+  border-top: 3px solid var(--primary) !important;
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.12) !important;
+}
+
+.nav-dropdown-item {
+  color: #1E293B !important;
+}
+
+.nav-dropdown-item:hover {
+  background: #FFF7ED !important;
+  color: var(--primary) !important;
+}
+
+.nav-dropdown-item.active {
+  background: #FFEDD5 !important;
+  border: 1px solid #FDBA74 !important;
+  color: var(--primary) !important;
+}
+
+@media (min-width: 1181px) {
+  .nav-dropdown:hover > .nav-link,
+  .nav-dropdown:focus-within > .nav-link {
+    color: var(--primary) !important;
+    background: #FFF7ED !important;
+  }
+}
+
+@media (max-width: 1180px) {
+  .nav-menu {
+    background: #FFFFFF !important;
+    border-bottom: 2px solid var(--primary) !important;
+    box-shadow: 0 20px 36px rgba(15, 23, 42, 0.14) !important;
+  }
+
+  .nav-dropdown-menu {
+    background: #F8FAFC !important;
+    border: none !important;
+    border-left: 2.5px solid var(--primary) !important;
+    box-shadow: none !important;
+  }
+}
+
+/* ---------- 8.2 HERO DAYLIGHT INDUSTRIAL EDITORIAL ---------- */
+.hero {
+  background: var(--bg-canvas) !important;
+  padding-top: 94px !important;
+  padding-bottom: 56px !important;
+  border-bottom: 1.5px solid var(--border-crisp);
+}
+
+.hero-bg {
+  background-color: #FAF8F5 !important;
+  background-image:
+    radial-gradient(circle at 88% 14%, rgba(234, 88, 12, 0.10), transparent 48%),
+    radial-gradient(circle at 12% 80%, rgba(2, 132, 199, 0.06), transparent 45%),
+    radial-gradient(#CBD5E1 1px, transparent 1px) !important;
+  background-size: 100% 100%, 100% 100%, 26px 26px !important;
+}
+
+.hero-bg-overlay {
+  background: linear-gradient(180deg, rgba(250, 248, 245, 0.2) 0%, rgba(250, 248, 245, 0.85) 100%) !important;
+}
+
+/* Dải trạng thái điều phối trực tiếp (Telemetry Ribbon) */
+.hero-telemetry-ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-crisp);
+  border-left: 4px solid #16A34A;
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  font-size: 0.84rem;
+}
+
+.telemetry-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #334155;
+}
+
+.telemetry-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #DCFCE7;
+  color: #15803D;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.74rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+.telemetry-live-badge .pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #16A34A;
+  display: inline-block;
+}
+
+.telemetry-sep {
+  color: #CBD5E1;
+}
+
+.telemetry-link {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--primary) !important;
+  white-space: nowrap;
+}
+
+.telemetry-link:hover {
+  text-decoration: underline;
+}
+
+/* Kicker & Tiêu đề Editorial trên nền sáng */
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #475569 !important;
+}
+
+.kicker-code {
+  background: #0F172A;
+  color: #FFFFFF !important;
+  padding: 4px 9px;
+  border-radius: 5px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.hero .hero-content *,
+.hero-title {
+  color: #0F172A;
+}
+
+.hero-title {
+  font-size: clamp(2.1rem, 3.8vw, 3.15rem) !important;
+  font-weight: 900 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.025em !important;
+  color: #0F172A !important;
+  margin-bottom: 16px !important;
+}
+
+/* Bỏ màu chữ gradient vàng-cam kiểu AI, thay bằng chữ cam cơ khí + gạch chân khối */
+.hero-title span.highlight {
+  background: linear-gradient(180deg, transparent 66%, rgba(234, 88, 12, 0.18) 66%) !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  -webkit-text-fill-color: var(--primary) !important;
+  color: var(--primary) !important;
+  padding: 0 4px;
+}
+
+.hero .hero-description {
+  color: #334155 !important;
+  font-size: 1.04rem !important;
+  line-height: 1.7 !important;
+  margin-bottom: 24px !important;
+  max-width: 610px;
+}
+
+.hero .hero-description strong {
+  color: #0F172A !important;
+  font-weight: 700;
+}
+
+/* Nút bấm Hero rõ nét, không nhấp nháy lòe loẹt */
+.btn-emergency {
+  background: #DC2626 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 18px rgba(220, 38, 38, 0.25) !important;
+  animation: none !important;
+  border-radius: 10px !important;
+}
+
+.btn-emergency:hover {
+  background: #B91C1C !important;
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--primary) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.22) !important;
+  border-radius: 10px !important;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover) !important;
+}
+
+.btn-zalo {
+  border-radius: 10px !important;
+  box-shadow: 0 6px 18px rgba(0, 104, 255, 0.2) !important;
+}
+
+.btn-outline,
+.hero .btn-outline {
+  background: #FFFFFF !important;
+  border: 1.5px solid var(--border-strong) !important;
+  color: #0F172A !important;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.btn-outline:hover,
+.hero .btn-outline:hover {
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+  background: #FFF7ED !important;
+}
+
+/* Khung ảnh thực địa + Bảng thông số kỹ thuật trong Hero */
+.hero-field-showcase {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 16px;
+  align-items: stretch;
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-crisp);
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.field-photo-frame {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  min-height: 128px;
+}
+
+.field-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: none !important;
+}
+
+.field-photo-tag {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(15, 23, 42, 0.88);
+  color: #FFFFFF !important;
+  font-family: var(--font-heading);
+  font-size: 0.64rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.hero-field-showcase .hero-stats {
+  border-top: none !important;
+  padding-top: 0 !important;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+
+.hero-field-showcase .stat-item {
+  background: #F8FAFC;
+  border: 1px solid var(--border-crisp);
+  border-radius: 10px;
+  padding: 12px 10px;
+  height: 100%;
+  justify-content: center;
+}
+
+.stat-code {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #64748B !important;
+  margin-bottom: 4px;
+}
+
+.hero-field-showcase .stat-number {
+  font-size: 1.28rem !important;
+  font-weight: 900 !important;
+  color: var(--primary) !important;
+}
+
+.hero-field-showcase .stat-label {
+  font-size: 0.76rem !important;
+  color: #475569 !important;
+  line-height: 1.35 !important;
+}
+
+/* Phiếu Điều Lệnh Cứu Hộ (Hero Right Widget) */
+.hero-widget-card {
+  border-top: 1px solid var(--border-crisp) !important;
+  border: 1.5px solid var(--border-strong) !important;
+  border-radius: 16px !important;
+  padding: 0 22px 22px !important;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08) !important;
+  overflow: hidden !important;
+}
+
+.widget-top-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0F172A;
+  color: #FFFFFF;
+  margin: 0 -22px 18px -22px;
+  padding: 10px 22px;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.widget-doc-code {
+  color: #F8FAFC;
+}
+
+.widget-status-online {
+  color: #4ADE80;
+}
+
+/* ---------- 8.3 DẢI QUY TRÌNH 4 BƯỚC (WORKFLOW STRIP) ---------- */
+.workflow-strip {
+  background: #FFFFFF;
+  border-bottom: 1.5px solid var(--border-crisp);
+  padding: 36px 0;
+}
+
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.workflow-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #FAF8F5;
+  border: 1px solid var(--border-crisp);
+  transition: var(--transition);
+}
+
+.workflow-step:hover {
+  border-color: var(--primary);
+  background: #FFFFFF;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+}
+
+.workflow-step-num {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--primary);
+  background: #FFF7ED;
+  border: 1.5px solid #FDBA74;
+  border-radius: 8px;
+  min-width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.workflow-step-body h4 {
+  font-family: var(--font-heading);
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 4px;
+}
+
+.workflow-step-body p {
+  font-size: 0.84rem !important;
+  line-height: 1.55 !important;
+  color: #475569 !important;
+  margin: 0;
+}
+
+/* ---------- 8.4 TIÊU ĐỀ SECTION BẤT ĐỐI XỨNG (EDITORIAL SPLIT HEADER) ---------- */
+.editorial-section-head {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 36px;
+  align-items: end;
+  padding-bottom: 24px;
+  margin-bottom: 42px;
+  border-bottom: 1.5px solid var(--border-crisp);
+}
+
+.editorial-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.editorial-kicker::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: var(--primary);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.editorial-section-head .section-title {
+  text-align: left !important;
+  font-size: clamp(1.75rem, 2.8vw, 2.35rem) !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0 !important;
+  color: #0F172A !important;
+}
+
+/* Xóa kiểu chữ gradient vàng-cam đại trà ở mọi tiêu đề section */
+.section-title span,
+.editorial-section-head .section-title span {
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  -webkit-text-fill-color: var(--primary) !important;
+  color: var(--primary) !important;
+}
+
+.editorial-head-right .section-desc {
+  text-align: left !important;
+  margin: 0 !important;
+  padding-left: 18px;
+  border-left: 3px solid var(--primary);
+  font-size: 0.96rem !important;
+  line-height: 1.68 !important;
+  color: #475569 !important;
+}
+
+/* ---------- 8.5 THẺ DỊCH VỤ HỒ SƠ KỸ THUẬT (SERVICE CARDS) ---------- */
+.service-card {
+  background: #FFFFFF !important;
+  border: 1.5px solid var(--border-crisp) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04) !important;
+}
+
+.service-card:hover {
+  transform: translateY(-5px) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.09) !important;
+}
+
+.service-badge {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #0F172A !important;
+  border: 1px solid var(--border-crisp) !important;
+  border-left: 3px solid var(--primary) !important;
+  border-radius: 6px !important;
+  font-family: var(--font-heading);
+  font-size: 0.72rem !important;
+  letter-spacing: 0.03em;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+}
+
+/* ---------- 8.6 CÔNG CỤ TỰ TÍNH PHÍ & BẢNG NIÊM YẾT ---------- */
+.calculator-card {
+  background: #FFFFFF !important;
+  border: 1.5px solid var(--border-strong) !important;
+  border-top: 4px solid #0F172A !important;
+  border-radius: 14px !important;
+  padding: 26px !important;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06) !important;
+}
+
+.calc-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.calc-card-top .pricing-info-badge {
+  margin-bottom: 0;
+}
+
+.calc-code-tag {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #64748B;
+  background: #F1F5F9;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.calc-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.calc-distance-badge {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--primary);
+  background: #FFF7ED;
+  border: 1px solid #FDBA74;
+  padding: 2px 10px;
+  border-radius: 6px;
+}
+
+.calc-range-slider {
+  width: 100%;
+  accent-color: var(--primary);
+  height: 6px;
+  background: #E2E8F0;
+  border-radius: 999px;
+  cursor: pointer;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.calc-result-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  background: #FFF7ED;
+  border: 1.5px solid #FDBA74;
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-top: 6px;
+}
+
+.calc-result-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #9A3412;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.calc-result-price {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--primary);
+  line-height: 1.15;
+}
+
+.price-table-head-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  margin-bottom: 8px;
+  border-bottom: 2px solid #0F172A;
+}
+
+.price-table-head-row .price-table-title {
+  margin-bottom: 0 !important;
+}
+
+.price-unit-note {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #64748B;
+}
+
+.price-item {
+  border-bottom: 1px dashed var(--border-crisp);
+}
+
+.price-item-tag {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--primary);
+  background: #FFF7ED;
+  border: 1px solid #FFEDD5;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* Hộp Cam kết 4 Không sáng sủa kiểu Chứng nhận */
+.pledge-box-premium {
+  background: #FFFBEB !important;
+  border: 1.5px solid #FDE68A !important;
+  border-left: 5px solid var(--primary) !important;
+  border-radius: 14px !important;
+  color: #0F172A !important;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04) !important;
+}
+
+.pledge-header-inline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.pledge-shield-icon {
+  width: 48px !important;
+  height: 48px !important;
+  margin: 0 !important;
+  background: #FEF3C7 !important;
+  color: var(--primary) !important;
+  border-radius: 10px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pledge-premium-title {
+  color: #0F172A !important;
+  font-size: 1.15rem !important;
+  text-align: left !important;
+  margin-bottom: 2px !important;
+}
+
+.pledge-premium-Subtitle,
+.pledge-premium-subtitle {
+  color: #92400E !important;
+  text-align: left !important;
+  margin-bottom: 0 !important;
+  font-size: 0.84rem !important;
+}
+
+.pledge-item-premium {
+  background: #FFFFFF !important;
+  border: 1px solid #FDE68A !important;
+  color: #1E293B !important;
+  padding: 10px 14px !important;
+  border-radius: 8px !important;
+}
+
+.pledge-icon-check {
+  background: var(--primary) !important;
+  color: #FFFFFF !important;
+  font-family: var(--font-heading);
+  font-size: 0.72rem !important;
+  font-weight: 800;
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 6px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.trust-badge {
+  background: #FFFFFF !important;
+  border: 1px solid #FDE68A !important;
+  color: #92400E !important;
+  font-weight: 700 !important;
+}
+
+/* ---------- 8.7 KHU VỰC LIÊN HỆ & MODAL SÁNG RÕ ---------- */
+.contact-hotline-hero {
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%) !important;
+  border: 1.5px solid #FDBA74 !important;
+  border-radius: 12px !important;
+}
+
+.contact-hotline-hero::before {
+  display: none !important;
+}
+
+.contact-hotline-label {
+  color: #9A3412 !important;
+}
+
+.contact-hotline-number {
+  color: #DC2626 !important;
+  text-shadow: none !important;
+}
+
+.contact-hotline-sub {
+  font-size: 0.86rem;
+  color: #9A3412;
+  margin-top: 6px;
+  font-weight: 700;
+}
+
+.contact-icon {
+  background: #FFF7ED !important;
+  border: 1px solid #FDBA74 !important;
+  color: var(--primary) !important;
+}
+
+.modal-overlay {
+  background: rgba(15, 23, 42, 0.55) !important;
+}
+
+.modal-card {
+  background: #FFFFFF !important;
+  border: 1.5px solid var(--border-crisp) !important;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.18) !important;
+}
+
+.modal-close-btn {
+  background: #F1F5F9 !important;
+  color: #334155 !important;
+}
+
+/* ---------- 8.8 RESPONSIVE CHO BỐ CỤC MỚI ---------- */
+@media (max-width: 1024px) {
+  .workflow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .editorial-section-head {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding-bottom: 18px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-telemetry-ribbon {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 12px;
+  }
+
+  .hero-field-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .field-photo-frame {
+    height: 170px;
+  }
+
+  .workflow-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .calc-result-box {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .calc-result-box .btn {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   8.9 CHUẨN HÓA BỐ CỤC ĐỐI XỨNG TUYỆT ĐỐI (STRICT SYMMETRY & AFFORDANCE)
+   Tuân thủ AGENTS.md (Mục 4) & .agents/skills/web-layout-ux/SKILL.md
+   ========================================================================== */
+
+/* 1. HERO 2 CỘT BẰNG MÉP TRÊN & MÉP DƯỚI + 2 NÚT CTA CÂN ĐỐI */
+.hero-grid {
+  display: grid !important;
+  grid-template-columns: 1.08fr 0.92fr !important;
+  gap: 32px !important;
+  align-items: stretch !important;
+}
+
+.hero-content {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+}
+
+.hero-cta-group {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 14px !important;
+  margin-bottom: 24px !important;
+}
+
+.hero-cta-group .btn {
+  width: 100% !important;
+  justify-content: center !important;
+  padding: 15px 18px !important;
+  font-size: 0.95rem !important;
+  white-space: nowrap !important;
+}
+
+.hero-widget-card {
+  margin-top: 0 !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.hero-widget-card .widget-form {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+/* 2. QUY TRÌNH 4 BƯỚC & KHU VỰC 4 Ô ĐỒNG ĐỀU CHIỀU CAO 100% */
+.workflow-grid,
+.coverage-grid {
+  align-items: stretch !important;
+}
+
+.workflow-step,
+.coverage-zone {
+  height: 100% !important;
+}
+
+.coverage-zone {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+/* 3. LƯỚI 6 THẺ DỊCH VỤ ĐỒNG BỘ CHIỀU CAO & CHÂN THẺ THẲNG HÀNG */
+.services-grid {
+  align-items: stretch !important;
+}
+
+.service-card {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.service-content {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.service-desc {
+  min-height: 3.1em !important;
+  margin-bottom: 14px !important;
+}
+
+.service-features {
+  margin-top: auto !important;
+  margin-bottom: 16px !important;
+}
+
+.service-footer {
+  margin-top: auto !important;
+}
+
+/* 4. BẢNG GIÁ LƯỚI 2x2 ĐỐI XỨNG TUYỆT ĐỐI (KHÔNG LỆCH CỘT) */
+.pricing-wrapper.pricing-grid-2x2 {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 24px !important;
+  align-items: stretch !important;
+}
+
+.pricing-grid-2x2 > .calculator-card,
+.pricing-grid-2x2 > .price-table-card,
+.pricing-grid-2x2 > .pricing-info-card,
+.pricing-grid-2x2 > .pledge-box-premium {
+  height: 100% !important;
+  margin: 0 !important;
+  position: static !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  padding: 26px !important;
+  border-radius: 14px !important;
+}
+
+.pricing-grid-2x2 > .price-table-card {
+  border: 1.5px solid var(--border-strong) !important;
+  border-top: 4px solid var(--primary) !important;
+}
+
+.pricing-grid-2x2 .calc-form-grid,
+.pricing-grid-2x2 .price-list {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.pricing-grid-2x2 .pricing-hotline-box,
+.pricing-grid-2x2 .pledge-trust-badges {
+  margin-top: 20px !important;
+}
+
+/* 5. LIÊN HỆ 2 CỘT 50/50 BẰNG NHAU TUYỆT ĐỐI */
+.contact-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 24px !important;
+  align-items: stretch !important;
+}
+
+.contact-info-card,
+.contact-form-card {
+  height: 100% !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.contact-form-body {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.contact-form-body .textarea-control {
+  min-height: 118px !important;
+}
+
+.contact-cta-pair {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 12px !important;
+  margin-top: 20px !important;
+}
+
+@media (max-width: 1024px) {
+  .hero-grid,
+  .pricing-wrapper.pricing-grid-2x2,
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-cta-group,
+  .contact-cta-pair {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+

@@ -4398,3 +4398,651 @@
     padding: 26px 22px;
   }
 }
+
+/* =========================================================================
+   SUBPAGES MOBILE & SMALL PHONE RESPONSIVE OVERHAUL (<= 900px, <= 640px, <= 480px)
+   Đảm bảo toàn bộ 13 trang con hiển thị cân đối, không tràn ngang, không lệch bố cục
+   ========================================================================= */
+
+/* 1. Chống tràn ngang & ép co giãn chuẩn cho mọi phần tử con trong Grid trên trang con */
+.pg,
+.pg main,
+.pg section {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+.oto-hero__grid > *,
+.oto-vs > *,
+.oto-bento > *,
+.oto-tiers > *,
+.xm-hero__grid > *,
+.xm-diag__wrap > *,
+.xm-board__grid > *,
+.v-hero__grid > *,
+.v-Lookbook > *,
+.v-carte > *,
+.v-why__grid > *,
+.k-hero__grid > *,
+.k-matrix > *,
+.k-split > *,
+.ab-hero__grid > *,
+.ab-story-row > *,
+.ab-pillars > *,
+.ab-div-grid > *,
+.ab-cert-grid > *,
+.nw-layout > *,
+.nw-grid > *,
+.ct-hero__grid > *,
+.ct-map-grid > *,
+.ct-form-grid > *,
+.hub-grid > *,
+.region-zone-grid > *,
+.landmark-grid > *,
+.city-panorama-card > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* 2. Tablet & Mobile (<= 900px) */
+@media (max-width: 900px) {
+  .pg .wrap,
+  .pg .wrap-narrow {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Khắc phục các nhãn nổi có toạ độ âm (-left / -right) làm lệch trang trên màn hình < 900px */
+  .k-badge {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .v-stamp {
+    left: 10px;
+    bottom: 14px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .ab-float-card--top {
+    left: 12px;
+    right: 12px;
+    max-width: calc(100% - 24px);
+  }
+
+  .ab-float-card--bottom {
+    right: 12px;
+    left: auto;
+    max-width: calc(100% - 24px);
+  }
+}
+
+/* 3. Điện thoại di động (<= 640px) */
+@media (max-width: 640px) {
+  .pg .sec {
+    padding: 48px 0;
+  }
+
+  .pg .sec__head {
+    margin-bottom: 30px;
+  }
+
+  .pg .d-xl {
+    font-size: clamp(1.65rem, 6.8vw, 2.2rem);
+    line-height: 1.2;
+    word-break: break-word;
+  }
+
+  .pg .d-lg {
+    font-size: clamp(1.4rem, 5.8vw, 1.85rem);
+    line-height: 1.24;
+    word-break: break-word;
+  }
+
+  .pg .d-md {
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
+    line-height: 1.28;
+  }
+
+  .pg .lead {
+    font-size: 0.95rem;
+    line-height: 1.62;
+  }
+
+  .pg .kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    flex-wrap: wrap;
+  }
+
+  .pg .crumb {
+    font-size: 0.76rem;
+    margin-bottom: 14px;
+    gap: 6px;
+  }
+
+  /* Cụm nút bấm trên tất cả trang con xếp dọc cân đối 100% chiều ngang */
+  .pg .btn-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .pg .btn-row .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 18px;
+    font-size: 0.94rem;
+    text-align: center;
+  }
+
+  /* Thanh chuyển đổi khu vực TP.HCM / Hà Nội vừa khít màn hình nhỏ */
+  .region-switch {
+    display: flex;
+    width: 100%;
+    padding: 5px;
+    gap: 4px;
+    border-radius: 14px;
+    justify-content: space-between;
+  }
+
+  .region-switch__item {
+    flex: 1 1 auto;
+    justify-content: center;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  /* --- Cứu Hộ Ô Tô (HCM / Hà Nội / Hub) --- */
+  .oto-hero {
+    padding: 96px 0 48px;
+  }
+
+  .oto-telemetry {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 22px;
+  }
+
+  .oto-telemetry__cell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+  }
+
+  .oto-telemetry__val {
+    font-size: 1.45rem;
+  }
+
+  .oto-telemetry__lbl {
+    margin-top: 0;
+  }
+
+  .oto-frame__hud {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .oto-hud-pill {
+    font-size: 0.68rem;
+    padding: 5px 10px;
+  }
+
+  .oto-frame__bar {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .oto-vs__card {
+    padding: 22px 16px;
+    border-radius: 16px;
+  }
+
+  .bento {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .tier,
+  .tier--hot {
+    padding: 24px 18px;
+    border-radius: 18px;
+    transform: none !important;
+  }
+
+  .tier__num {
+    font-size: 1.95rem;
+  }
+
+  .city-panorama-card {
+    border-radius: 18px;
+    margin-bottom: 24px;
+  }
+
+  .city-panorama-card__media {
+    min-height: 220px;
+  }
+
+  .city-panorama-card__badge {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    width: fit-content;
+    max-width: calc(100% - 24px);
+    font-size: 0.68rem;
+    padding: 6px 12px;
+  }
+
+  .city-panorama-card__caption {
+    left: 14px;
+    right: 14px;
+    bottom: 12px;
+    font-size: 0.76rem;
+  }
+
+  .city-panorama-card__body {
+    padding: 20px 16px;
+  }
+
+  .landmark-card__img {
+    height: 185px;
+  }
+
+  .landmark-card__body {
+    padding: 18px 16px 20px;
+  }
+
+  .region-zone-card {
+    padding: 20px 16px;
+  }
+
+  .oto-cta__box {
+    padding: 26px 18px;
+    border-radius: 20px;
+  }
+
+  /* --- Cứu Hộ Xe Máy --- */
+  .xm-hero {
+    padding: 96px 0 48px;
+  }
+
+  /* Chuyển 3 chip nổi thành danh sách xếp gọn bên dưới ảnh trên điện thoại nhỏ
+     để không đè lên nhau và không tràn mép màn hình */
+  .xm-hero__visual {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .xm-blob {
+    aspect-ratio: 16 / 11;
+    border-radius: 20px;
+  }
+
+  .xm-chip {
+    position: static !important;
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+  }
+
+  .xm-diag__panel {
+    padding: 20px 16px;
+  }
+
+  .xm-board {
+    padding: 22px 16px;
+    border-radius: 20px;
+  }
+
+  .xm-board__head {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+  }
+
+  .xm-item__row {
+    flex-wrap: wrap;
+    gap: 4px 10px;
+  }
+
+  /* --- Sửa Xe Vespa (HCM / Hà Nội / Hub) --- */
+  .v-hero {
+    padding: 96px 0 48px;
+  }
+
+  .v-arch {
+    outline-offset: 5px;
+    border-radius: 140px 140px 18px 18px;
+    aspect-ratio: 4 / 4.3;
+  }
+
+  .v-stamp {
+    left: 8px;
+    bottom: 8px;
+    width: 88px;
+    height: 88px;
+    font-size: 0.54rem;
+    padding: 8px;
+  }
+
+  .v-stamp b {
+    font-size: 1.05rem;
+  }
+
+  .v-Pull {
+    padding-left: 14px;
+    margin: 18px 0;
+  }
+
+  .v-carte {
+    padding: 22px 16px;
+    border-radius: 18px;
+  }
+
+  .v-row {
+    flex-wrap: wrap;
+    gap: 4px 10px;
+  }
+
+  .v-why__card {
+    padding: 20px 16px;
+  }
+
+  /* --- Sửa Khóa Xe Máy (HCM / Hà Nội / Hub) --- */
+  .k-hero {
+    padding: 96px 0 48px;
+  }
+
+  .k-term {
+    padding: 14px;
+    font-size: 0.75rem;
+  }
+
+  /* Cho phép dòng chữ trong khung terminal tự xuống dòng trên điện thoại nhỏ,
+     tránh đẩy cột Grid tràn khỏi màn hình */
+  .k-term p {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    margin: 4px 0;
+  }
+
+  .k-vault {
+    aspect-ratio: 4 / 3.4;
+  }
+
+  .k-badge {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .k-cell {
+    padding: 22px 16px;
+  }
+
+  .k-price-box {
+    padding: 22px 16px;
+    border-radius: 18px;
+  }
+
+  .k-price-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 12px 0;
+  }
+
+  /* --- Trang Giới Thiệu (About Page) --- */
+  .ab-hero {
+    padding: 96px 0 52px;
+  }
+
+  .ab-hero__badge {
+    display: flex;
+    max-width: 100%;
+    white-space: normal;
+    font-size: 0.72rem;
+    padding: 8px 12px;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  .ab-hero__quote {
+    padding: 14px 16px;
+    font-size: 0.92rem;
+  }
+
+  .ab-hero__metrics {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .ab-metric {
+    padding: 14px 12px;
+  }
+
+  .ab-metric strong {
+    font-size: 1.45rem;
+  }
+
+  /* Trên điện thoại, chuyển 2 thẻ nổi trên ảnh Giới Thiệu thành thẻ xếp gọn bên dưới ảnh
+     để không che khuất hình ảnh và không tràn mép */
+  .ab-showcase {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ab-showcase__main {
+    aspect-ratio: 4 / 3.4;
+    border-radius: 18px;
+  }
+
+  .ab-showcase__caption {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+
+  .ab-float-card--top,
+  .ab-float-card--bottom {
+    position: static !important;
+    max-width: 100% !important;
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+
+  .ab-origin-sec,
+  .ab-meaning-sec,
+  .ab-tl-sec,
+  .ab-div-sec,
+  .ab-cert-sec {
+    padding: 52px 0;
+  }
+
+  .ab-narrative-card {
+    padding: 22px 16px;
+    border-radius: 18px;
+  }
+
+  .ab-founder-box {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .ab-founder-box p {
+    font-size: 0.96rem;
+    line-height: 1.65;
+  }
+
+  .ab-founder-sig {
+    gap: 12px;
+  }
+
+  .ab-etymology {
+    padding: 22px 16px;
+    border-radius: 18px;
+    gap: 18px;
+  }
+
+  .ab-etymology__word {
+    padding: 18px 16px;
+  }
+
+  .ab-etymology__char {
+    font-size: 2rem;
+  }
+
+  .ab-pillar {
+    padding: 22px 16px;
+    border-radius: 18px;
+  }
+
+  .ab-pillar__watermark {
+    font-size: 2.8rem;
+    top: 12px;
+    right: 14px;
+  }
+
+  .ab-pillar__badge {
+    flex-wrap: wrap;
+    gap: 8px 10px;
+  }
+
+  .ab-tl::before {
+    left: 14px;
+  }
+
+  .ab-tl__row {
+    grid-template-columns: 34px 1fr;
+    gap: 12px;
+  }
+
+  .ab-tl__dot {
+    width: 16px;
+    height: 16px;
+  }
+
+  .ab-tl__card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .ab-div-card__body {
+    padding: 20px 16px;
+  }
+
+  .ab-cta-banner {
+    padding: 52px 0;
+  }
+
+  /* --- Trang Tin Tức (News Page) --- */
+  .nw-hero {
+    padding: 96px 0 36px;
+  }
+
+  .nw-feat__body {
+    padding: 20px 16px;
+  }
+
+  .nw-card__body {
+    padding: 18px 16px;
+  }
+
+  .nw-side-box,
+  .nw-sos {
+    padding: 20px 16px;
+  }
+
+  /* --- Trang Liên Hệ (Contact Page) --- */
+  .ct-hero {
+    padding: 96px 0 48px;
+  }
+
+  .ct-phone {
+    padding: 22px 16px;
+    border-radius: 18px;
+  }
+
+  .ct-phone__num {
+    font-size: clamp(1.65rem, 7vw, 2.2rem);
+    word-break: break-word;
+  }
+
+  .ct-SLA {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .ct-SLA div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+  }
+
+  .ct-hq,
+  .ct-form,
+  .ct-side {
+    padding: 22px 16px;
+    border-radius: 18px;
+  }
+
+  .ct-branch {
+    padding: 18px 16px;
+  }
+
+  /* --- Các trang Hub chọn khu vực TP.HCM / Hà Nội --- */
+  .hub-hero {
+    padding: 96px 0 52px;
+  }
+
+  .hub-card__media {
+    height: 195px;
+  }
+
+  .hub-card__body {
+    padding: 20px 16px 22px;
+  }
+
+  .hub-card__cta {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+}
+
+/* 4. Điện thoại màn hình rất nhỏ (<= 380px) */
+@media (max-width: 380px) {
+  .region-switch {
+    flex-direction: column;
+  }
+
+  .region-switch__item {
+    width: 100%;
+  }
+
+  .ab-hero__metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
